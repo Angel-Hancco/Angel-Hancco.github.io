@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Angel Hancco | CS Student</title>
+    <style>
+        /* reset :3 */
+        *{margin:0;padding:0;box-sizing:border-box;}
+        
+        body{
+            background:#0a0a0f;
+            color:#e6e6e6;
+            font-family:system-ui,sans-serif;
+            line-height:1.5;
+            position:relative;
+        }
+        
+        /* Fondo de la universidad con capa oscura :D */
+        body::before{
+            content:"";
+            position:fixed;
+            top:0;
+            left:0;
+            width:100%;
+            height:100%;
+            background-image:url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTjhMwBltLkyaQkUSnFpmHTL53IUKcAFCC_5Q&s");
+            background-size:cover;
+            background-position:center;
+            filter:brightness(0.35);
+            z-index:-2;
+        }
+        
+        body::after{
+            content:"";
+            position:fixed;
+            top:0;
+            left:0;
+            width:100%;
+            height:100%;
+            background:rgba(10,10,15,0.6);
+            z-index:-1;
+        }
+        
+        .container{
+            max-width:1000px;
+            margin:0 auto;
+            padding:2rem 1.5rem;
+            position:relative;
+        }
+        
+        nav{
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            flex-wrap:wrap;
+            gap:1rem;
+            margin-bottom:2rem;
+            padding-bottom:1rem;
+            border-bottom:1px solid #2a2a2a;
+        }
+        
+        .logo{
+            font-size:1.6rem;
+            font-weight:700;
+            color:#c9a03d;
+        }
+        
+        .nav-links{
+            display:flex;
+            gap:1.5rem;
+        }
+        
+        .nav-links a{
+            color:#aaa;
+            text-decoration:none;
+        }
+        
+        .nav-links a:hover{
+            color:#c9a03d;
+        }
+        
+        section{
+            margin-bottom:3rem;
+            scroll-margin-top:2rem;
+        }
+        
+        h1{
+            font-size:2.5rem;
+            margin-bottom:1rem;
+        }
+        
+        .gold{
+            color:#c9a03d;
+        }
+        
+        h2{
+            font-size:1.6rem;
+            margin-bottom:1.2rem;
+            border-left:3px solid #c9a03d;
+            padding-left:1rem;
+        }
+        
+        /* tarjetas con fondo semi-transparente Owo */
+        .card{
+            background:rgba(17,17,23,0.9);
+            border:1px solid #222;
+            border-radius:20px;
+            padding:1.5rem;
+            margin-bottom:1.5rem;
+            backdrop-filter:blur(2px);
+        }
+        
+        .info-grid{
+            display:flex;
+            flex-wrap:wrap;
+            gap:1rem;
+        }
+        
+        .info-item{
+            flex:1;
+            min-width:140px;
+            padding:0.5rem 0;
+            border-bottom:1px solid #1a1a1a;
+        }
+        
+        .info-label{
+            font-size:0.7rem;
+            color:#888;
+            text-transform:uppercase;
+        }
+        
+        .uni-row{
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            flex-wrap:wrap;
+            gap:1rem;
+            margin-top:1rem;
+        }
+        
+        .uni-link{
+            display:flex;
+            align-items:center;
+            gap:0.6rem;
+            background:rgba(0,0,0,0.5);
+            padding:0.4rem 1rem;
+            border-radius:60px;
+            text-decoration:none;
+            color:#e6e6e6;
+            transition:0.2s;
+        }
+        
+        .uni-link:hover{
+            background:rgba(201,160,61,0.2);
+            border-color:#c9a03d;
+        }
+        
+        .uni-link img{
+            height:32px;
+            width:auto;
+            border-radius:6px;
+        }
+        
+        .uni-text{
+            font-size:0.8rem;
+            font-weight:500;
+        }
+        
+        .uni-text small{
+            display:block;
+            font-size:0.6rem;
+            color:#c9a03d;
+        }
+        
+        /* cursitos :D */
+        .course-row{
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            flex-wrap:wrap;
+            padding:0.7rem 0;
+            border-bottom:1px solid #1a1a1a;
+        }
+        
+        .prof-name{
+            display:flex;
+            align-items:center;
+            gap:6px;
+        }
+        
+        .prof-link{
+            background:#1a1a1a;
+            padding:2px 8px;
+            border-radius:30px;
+            text-decoration:none;
+            color:#8ab4f8;
+            font-size:0.7rem;
+        }
+        
+        .prof-link:hover{
+            color:#c9a03d;
+        }
+        
+        .mates-grid{
+            display:grid;
+            grid-template-columns:repeat(auto-fill,minmax(130px,1fr));
+            gap:1rem;
+        }
+        
+        .mate-card{
+            background:rgba(17,17,23,0.9);
+            border:1px solid #222;
+            border-radius:16px;
+            padding:0.8rem;
+            text-align:center;
+        }
+        
+        .mate-initials{
+            width:45px;
+            height:45px;
+            background:#1a1a1a;
+            border-radius:50%;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            margin:0 auto 0.6rem auto;
+            font-weight:700;
+            color:#c9a03d;
+        }
+        
+        .contact-list{
+            display:flex;
+            flex-direction:column;
+            gap:0.8rem;
+        }
+        
+        .contact-link{
+            display:flex;
+            align-items:center;
+            gap:0.8rem;
+            background:rgba(17,17,23,0.9);
+            border:1px solid #222;
+            border-radius:60px;
+            padding:0.6rem 1.2rem;
+            text-decoration:none;
+            color:#e6e6e6;
+        }
+        
+        .contact-link:hover{
+            border-color:#c9a03d;
+        }
+        
+        .btn{
+            display:inline-block;
+            border:1px solid #c9a03d;
+            color:#c9a03d;
+            padding:0.5rem 1.2rem;
+            border-radius:40px;
+            text-decoration:none;
+            margin-top:1rem;
+        }
+        
+        .btn:hover{
+            background:#1a1a1a;
+        }
+        
+        footer{
+            margin-top:2rem;
+            padding-top:1.5rem;
+            text-align:center;
+            border-top:1px solid #1a1a1a;
+            font-size:0.7rem;
+            color:#666;
+        }
+        
+        .goal{
+            font-size:0.8rem;
+            color:#c9a03d;
+            text-align:center;
+            margin-top:1rem;
+            font-style:italic;
+        }
+        
+        /* responsive Owo */
+        @media (max-width:700px){
+            .container{padding:1rem;}
+            h1{font-size:2rem;}
+            .nav-links{gap:1rem;}
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <nav>
+        <div class="logo">ANGEL</div>
+        <div class="nav-links">
+            <a href="#about">Sobre mí</a>
+            <a href="#cursos">Cursos</a>
+            <a href="#companeros">Compañeros</a>
+            <a href="#contacto">Contacto</a>
+        </div>
+    </nav>
+
+    <section id="about">
+        <h1>Angel Raul<br><span class="gold">Hancco Quispe</span></h1>
+        <p style="color:#aaa; margin-bottom:1.5rem;">Estudiante de Ciencias de la Computación · Arequipa</p>
+
+        <div class="card">
+            <div class="info-grid">
+                <div class="info-item"><div class="info-label">🎂 Cumpleaños</div><div>27 feb · 19 años</div></div>
+                <div class="info-item"><div class="info-label">📍 Ubicación</div><div>Arequipa, Perú</div></div>
+                <div class="info-item"><div class="info-label">📚 Carrera</div><div>Ciencias de la Computación</div></div>
+                <div class="info-item"><div class="info-label">🎮 Meta</div><div>Game Developer</div></div>
+            </div>
+            
+            <div class="uni-row">
+                <a href="https://ucsp.edu.pe" target="_blank" class="uni-link">
+                    <img src="https://scontent.faqp1-1.fna.fbcdn.net/v/t39.30808-6/515437734_1185786433585654_2239610772262657732_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeHj_HRyI6nSBM6q_DxElRI5ruRpshNibziu5GmyE2JvOF3Td6uO4puhTHeVIoT8bMDdPrZQx2rRUzT15PWpLeKl&_nc_ohc=9rP8MvlUJqUQ7kNvwH9W1Wy&_nc_oc=AdpQGve2Y5JcQT3WpJ2vjG2PrD_qCEeDFui_epbdGELvkU63irtAVJxEHlRyCRXU3dDtU2uGwbd95o7sTazw7rOc&_nc_zt=23&_nc_ht=scontent.faqp1-1.fna&_nc_gid=LBGqqrGxnzGBsEbY-0zsow&_nc_ss=7b2a8&oh=00_Af-sjCZNrVd-rVPLxRy3-x71_IppppL-EdLWm87FmputmQ&oe=6A219FB7" alt="UCSP">
+                    <div class="uni-text">Universidad Católica San Pablo <small>Ranking THE 2026</small></div>
+                </a>
+            </div>
+            
+            <div class="goal">✦ "Construir mundos, escribir lógica: futuro Desarrolador de Videojuegos" ✦</div>
+        </div>
+        
+        <p style="color:#bbb; margin-bottom:1rem;">Apasionado por la programación y los videojuegos. Aprendiendo Python y pronto C++.</p>
+        <a href="#contacto" class="btn">✦ Contacto ✦</a>
+    </section>
+
+    <section id="cursos">
+        <h2>Cursos · Ciclo 2026-I</h2>
+        <div class="course-row"><span>Fundamentos de Programación</span><span class="prof-name"><a class="prof-link" href="https://pe.linkedin.com/in/kelly-vizconde-la-motta-3a57a4143">LinkedIn</a> Kelly Vizconde</span></div>
+        <div class="course-row"><span>Fundamentos Matemáticos</span><span class="prof-name"><a class="prof-link" href="https://pe.linkedin.com/in/fiorella-mar%C3%ADa-rend%C3%B3n-garc%C3%ADa-7aa9b7374">LinkedIn</a> Fiorella Rendón</span></div>
+        <div class="course-row"><span>Introducción a la Computación</span><span class="prof-name"><a class="prof-link" href="https://pe.linkedin.com/in/ecuadrosv">LinkedIn</a> Ernesto Cuadros</span></div>
+        <div class="course-row"><span>Introducción a la Vida Universitaria</span><span>Pierina Pacheco</span></div>
+        <div class="course-row"><span>Comunicación</span><span>Lourdes Velarde</span></div>
+        <div class="course-row"><span>Lógica</span><span class="prof-name"><a class="prof-link" href="https://www.linkedin.com/in/solange-tejada/">LinkedIn</a> Solange Tejada</span></div>    </section>
+
+    <section id="companeros">
+        <h2>Compañeros</h2>
+        <div class="mates-grid">
+            <div class="mate-card"><div class="mate-initials">GF</div><div>Gabriel Flores</div><div style="font-size:0.7rem;color:#888;">CS · UCSP</div></div>
+            <div class="mate-card"><div class="mate-initials">MT</div><div>Matias Thuollier</div><div style="font-size:0.7rem;color:#888;">CS · UCSP</div></div>
+            <div class="mate-card"><div class="mate-initials">VP</div><div>Vanderlot Paco</div><div style="font-size:0.7rem;color:#888;">CS · UCSP</div></div>
+            <div class="mate-card"><div class="mate-initials">RM</div><div>Renato Manrique</div><div style="font-size:0.7rem;color:#888;">CS · UCSP</div></div>
+        </div>
+    </section>
+
+    <section id="contacto">
+        <h2>Contacto</h2>
+        <div class="contact-list">
+            <a href="mailto:angel.hancco@ucsp.edu.pe" class="contact-link">📧 angel.hancco@ucsp.edu.pe</a>
+            <a href="https://www.linkedin.com/in/angel-raul-hancco-quispe-822487411" class="contact-link">🔗 LinkedIn · Angel Hancco</a>
+            <a href="https://www.instagram.com/angel___unu/" class="contact-link">📷 @angel___unu</a>
+            <a href="https://wa.me/51903397567" class="contact-link">💬 +51 903 397 567</a>
+        </div>
+    </section>
+
+    <footer>Angel Hancco · Ciencias de la Computación · UCSP Arequipa · 2026</footer>
+</div>
+
+<!-- script para scroll :D -->
+<script>
+    // esto es para que el menu navegue suave 
+    document.querySelectorAll('.nav-links a, .btn').forEach(link => {
+        link.addEventListener('click', function(e) {
+            let hash = this.getAttribute('href');
+            if (hash && hash.startsWith('#')) {
+                let target = document.querySelector(hash);
+                if (target) {
+                    e.preventDefault();
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            }
+        });
+    });
+    console.log("portfolio listo :D");
+</script>
+</body>
+</html>
